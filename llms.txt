@@ -1,0 +1,75 @@
+# RevenueOS
+
+> RevenueOS is an independent studio offering GTM audit and execution, and custom client dashboards, for Indian businesses. It audits how a business finds and wins customers, fixes where deals slip away, and builds the dashboards that keep the work running.
+
+Site: https://revenueos.co.in/
+
+Headline: Fix how you sell. Then make it run without you.
+
+RevenueOS works on both halves of the same problem. Out front: how customers find the business, how quickly someone replies, and how deals move to a yes. Behind the scenes: the clients, tasks and schedules a team handles once they do. Fixing one without the other lets the gains leak away.
+
+The studio is small on purpose. You talk directly to the people auditing the business and building the fixes. You get a written scope and price before anything starts, and RevenueOS will say when you do not need something. Studies on the site are self-initiated concept studies with fictional businesses, not client projects.
+
+## Services
+
+### GTM Audit & Execution
+
+A review of how a business finds, answers and wins customers, showing where deals slip away, followed by the fixes. The audit covers lead sources and how they are tracked, response time and ownership, the sales process and follow-up, CRM, tools and data, the website and inquiry flow, and reporting. A project can include a written findings report, a lead flow map, a tool and data review, a prioritised fix list, CRM setup or cleanup, inquiry capture and routing, follow-up automation, outbound workflows, and pipeline reporting. The audit can be taken on its own.
+
+https://revenueos.co.in/#/gtm
+
+### Custom client dashboards
+
+Custom dashboards that bring clients, tasks, calendars and essential business information into one clearer workspace. Each person sees what is relevant to their role: owners get the overview, and the team gets their work. A dashboard can include client management, tasks and assignments, calendar and scheduling, performance visibility, inquiry capture, and automation and integrations. Fields, stages, views and permissions are shaped around how the business works.
+
+https://revenueos.co.in/#/dashboards
+
+## Contact
+
+- Website: https://revenueos.co.in/
+- Project inquiries: https://revenueos.co.in/#/contact
+- Privacy policy: https://revenueos.co.in/#/privacy
+- Terms of service: https://revenueos.co.in/#/terms
+
+No public email address, phone number or postal address is published on the site. Messages go through the contact form.
+
+## FAQ
+
+The questions and answers below are copied verbatim from the page.
+
+### What does RevenueOS do?
+
+Two things. We audit how businesses find and win customers, then put the fixes in place. And we build custom dashboards that help them manage clients, tasks and day-to-day work. Some businesses need one, some need both.
+
+### What is a GTM audit?
+
+A structured review of how your business brings in and converts customers: where inquiries come from, how quickly and consistently you reply, how deals move forward and which tools hold it all together. You get a written report of what's working, what isn't and what to fix first.
+
+### What does execution include?
+
+Putting the fixes in place. Depending on what the audit finds, that can mean setting up or cleaning your CRM, routing inquiries to the right person, automating follow-ups, building outbound workflows or setting up pipeline reporting.
+
+### Do we have to do the audit and execution together?
+
+No. Some businesses take the report and act on it themselves. Others ask us to build the fixes. You decide after you've seen the findings.
+
+### What are client dashboards?
+
+Web-based workspaces that bring your clients, tasks, calendar and key business information into one place. Each person sees what's relevant to their role, so owners get the overview and the team gets their work.
+
+### Can a dashboard be customised for our company?
+
+Yes, that's the point of it. Fields, stages, views and permissions are shaped around how your business works. We start from your process, not a template.
+
+### How does a project begin?
+
+With a conversation. Tell us about your business and what you'd like to improve. If we're a good fit, we'll ask more questions, then send a written proposal with the scope, timeline and price.
+
+### How is pricing determined?
+
+By scope. An audit is priced separately from execution, and a simple dashboard costs less than one with several roles and integrations. You'll see the price in writing before you commit to anything.
+
+### Do you provide ongoing support?
+
+Yes, if you want it. We can stay on for improvements after the fixes or dashboard go live. What that includes is agreed as part of your proposal.
+

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/gtm-audit.html", "destination": "/gtm-audit", "permanent": true },
+    { "source": "/client-dashboards.html", "destination": "/client-dashboards", "permanent": true },
+    { "source": "/work.html", "destination": "/work", "permanent": true },
+    { "source": "/about.html", "destination": "/about", "permanent": true },
+    { "source": "/contact.html", "destination": "/contact", "permanent": true },
+    { "source": "/privacy.html", "destination": "/privacy", "permanent": true },
+    { "source": "/terms.html", "destination": "/terms", "permanent": true },
+    { "source": "/src/:path*", "destination": "/", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/gtm-audit", "destination": "/gtm-audit.html" },
+    { "source": "/client-dashboards", "destination": "/client-dashboards.html" },
+    { "source": "/work", "destination": "/work.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/terms", "destination": "/terms.html" }
+  ]
+}

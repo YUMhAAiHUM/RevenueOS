@@ -1,7 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Generated from src/index.html by build.mjs. Edit the source, then run npm run build. -->
 <head>
 <meta charset="utf-8">
+<script>
+/* Old hash routes (/#/gtm and the rest) predate real URLs. Send them to the matching path. */
+(function () {
+  var routes = {
+    "gtm": "/gtm-audit",
+    "branding": "/gtm-audit",
+    "dashboards": "/client-dashboards",
+    "work": "/work",
+    "studio": "/about",
+    "contact": "/contact",
+    "privacy": "/privacy",
+    "terms": "/terms",
+    "services": "/#services",
+    "faq": "/#faq",
+    "contact/gtm": "/contact?service=gtm",
+    "contact/dashboards": "/contact?service=dashboards"
+  };
+  function redirectHash() {
+    var hash = location.hash;
+    if (!hash || hash.charAt(1) !== "/") return;
+    var raw = hash.slice(2).replace(/^\/+|\/+$/g, "");
+    if (!Object.prototype.hasOwnProperty.call(routes, raw)) return;
+    var next = new URL(routes[raw], location.origin);
+    if (next.pathname === location.pathname && next.search === location.search && next.hash === location.hash) return;
+    location.replace(next.pathname + next.search + next.hash);
+  }
+  redirectHash();
+  window.addEventListener("hashchange", redirectHash);
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GTM Audit &amp; Custom Client Dashboards for Indian Businesses | RevenueOS</title>
 <meta name="description" content="RevenueOS audits how Indian businesses find and win customers, fixes what is leaking, and builds custom client dashboards for managing clients, teams and work.">
@@ -518,6 +549,7 @@ Service pages
 .p-hero .kicker{ margin-bottom:28px; }
 .p-hero .h1{ grid-column:1 / span 8; }
 .p-hero .lead{ grid-column:9 / span 4; align-self:end; }
+.p-hero .answer{ grid-column:1 / -1; margin-top:clamp(22px, 3vw, 32px); }
 @media (max-width: 900px){ .p-hero .h1, .p-hero .lead{ grid-column:1 / -1; } .p-hero .lead{ margin-top:24px; } }
 .split{ display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); column-gap:var(--gap); }
 .split > .l{ grid-column:1 / span 5; }
@@ -639,26 +671,25 @@ Footer
 <a class="skip" href="#content" id="skip">Skip to content</a>
 <header class="hdr" id="hdr">
 <div class="wrap hdr-in">
-<a class="wordmark" href="#/" aria-label="RevenueOS home">Revenue<span>OS</span></a>
+<a class="wordmark" href="/" aria-label="RevenueOS home">Revenue<span>OS</span></a>
 <ul class="nav">
-<li><a href="#/gtm" data-nav="gtm">GTM Audit</a></li>
-<li><a href="#/dashboards" data-nav="dashboards">Client Dashboards</a></li>
-<li><a href="#/studio" data-nav="studio">Studio</a></li>
-<li><a href="#/contact" data-nav="contact">Contact</a></li>
+<li><a href="/gtm-audit" data-nav="gtm">GTM Audit</a></li>
+<li><a href="/client-dashboards" data-nav="dashboards">Client Dashboards</a></li>
+<li><a href="/about" data-nav="studio">Studio</a></li>
+<li><a href="/contact" data-nav="contact">Contact</a></li>
 </ul>
-<a class="btn btn-sm" href="#/contact">Start a project</a>
+<a class="btn btn-sm" href="/contact">Start a project</a>
 <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
 </div>
 </header>
 <nav class="mnav" id="mnav" aria-label="Main">
-<a href="#/gtm">GTM Audit</a>
-<a href="#/dashboards">Client Dashboards</a>
-<a href="#/studio">Studio</a>
-<a href="#/contact">Contact</a>
-<a class="btn" href="#/contact">Start a project</a>
+<a href="/gtm-audit">GTM Audit</a>
+<a href="/client-dashboards">Client Dashboards</a>
+<a href="/about">Studio</a>
+<a href="/contact">Contact</a>
+<a class="btn" href="/contact">Start a project</a>
 </nav>
 <main id="content" tabindex="-1">
-<!-- ====================================================== HOME -->
 <div class="page" data-page="home">
 <section class="hero" aria-labelledby="home-title">
 <div class="wrap">
@@ -671,14 +702,14 @@ Footer
 <div class="hero-side">
 <p class="lead">We audit how your business finds and wins customers, fix where deals are slipping away, and build the dashboards that keep everything running.</p>
 <div class="hero-actions">
-<a class="btn" href="#/work">Explore our work</a>
-<a class="link" href="#/contact">Start a project</a>
+<a class="btn" href="/work">Explore our work</a>
+<a class="link" href="/contact">Start a project</a>
 </div>
 </div>
 </div>
 <nav class="index" aria-label="Services">
-<a href="#/gtm"><span class="n">01</span><span class="t">GTM Audit &amp; Execution</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.3"/></svg><span class="d">How your business finds and wins customers.</span></a>
-<a href="#/dashboards"><span class="n">02</span><span class="t">Client Dashboards</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.3"/></svg><span class="d">How your business runs from day to day.</span></a>
+<a href="/gtm-audit"><span class="n">01</span><span class="t">GTM Audit &amp; Execution</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.3"/></svg><span class="d">How your business finds and wins customers.</span></a>
+<a href="/client-dashboards"><span class="n">02</span><span class="t">Client Dashboards</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.3"/></svg><span class="d">How your business runs from day to day.</span></a>
 </nav>
 </div>
 </section>
@@ -705,10 +736,10 @@ Footer
 <li>Follow-up and outbound automation</li>
 <li>Pipeline reporting</li>
 </ul>
-<a class="link-arrow" href="#/gtm">Explore GTM audits <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.3"/></svg></a>
+<a class="link-arrow" href="/gtm-audit">Explore GTM audits <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.3"/></svg></a>
 </div>
 <figure class="visual">
-<div data-audit="4"></div>
+<div data-audit="4"><div class="doc"><div class="doc-head"><div><span class="small">GTM audit, sample findings</span><p class="t">Halden Physiotherapy</p></div><span class="small">Concept study</span></div><div class="find"><span class="area">Inquiry response</span><p>Instagram and WhatsApp inquiries have no single owner. Many get their first reply the next day.</p><span class="pri high">High</span></div><div class="find"><span class="area">Follow-up</span><p>Package quotes go out, but nobody is reminded to check back with people who go quiet.</p><span class="pri high">High</span></div><div class="find"><span class="area">Lead sources</span><p>There is no record of which channel each client came from, so marketing spend can’t be judged.</p><span class="pri ">Medium</span></div><div class="find"><span class="area">Tools</span><p>Inquiries live in three places, and none of them is treated as the source of truth.</p><span class="pri ">Medium</span></div><p class="doc-foot"><b>Fix first:</b> route every inquiry, from every channel, into one shared list with a named owner and a same-day reply target.</p></div></div>
 <figcaption class="fig-cap"><span><b>Concept study.</b> Sample findings for Halden Physiotherapy, a fictional clinic.</span><span>Not a client project</span></figcaption>
 </figure>
 </article>
@@ -720,9 +751,9 @@ Footer
 <figure class="visual">
 <div class="frame home-ui">
 <div class="frame-bar"><div class="frame-dots" aria-hidden="true"><i></i><i></i><i></i></div><span class="frame-title">Owner overview</span><span class="tagline"><b>Sample data</b></span></div>
-<div class="ui ui-pad" id="home-ui"></div>
+<div class="ui ui-pad" id="home-ui"><div class="ui-head"><span class="ui-title">Good morning, Neha</span><span class="ui-sub">Tuesday</span></div><div class="stats"><div class="stat"><b>2</b><span>Due today</span></div><div class="stat warn"><b>2</b><span>Overdue</span></div><div class="stat"><b>5</b><span>Meetings this week</span></div></div><div class="cols"><div class="panel"><div class="panel-h">Needs attention <span>4 items</span></div><div class="li"><div class="t"><b>Reply to website inquiry</b><span>Kulkarni &amp; Co. Office</span></div><span class="due late">Overdue</span><span class="av empty" title="No owner">?</span></div><div class="li"><div class="t"><b>Book first call</b><span>Verma Builders</span></div><span class="due late">Overdue</span><span class="av" title="Aarav Rao">AR</span></div><div class="li"><div class="t"><b>Send revised quote</b><span>Desai Residence</span></div><span class="due ">Today</span><span class="av" title="Aarav Rao">AR</span></div><div class="li"><div class="t"><b>Upload second moodboard</b><span>Seabreeze Villas</span></div><span class="due ">Today</span><span class="av" title="Rohan Mehta">RM</span></div></div><div class="panel"><div class="panel-h">Team <span>Open work</span></div><div class="li"><div class="t"><b>Priya Shah</b><span>Project manager</span></div><span class="due">1 open</span><span class="av" title="Priya Shah">PS</span></div><div class="li"><div class="t"><b>Aarav Rao</b><span>Client lead</span></div><span class="due">2 open</span><span class="av" title="Aarav Rao">AR</span></div><div class="li"><div class="t"><b>Rohan Mehta</b><span>Designer</span></div><span class="due">2 open</span><span class="av" title="Rohan Mehta">RM</span></div></div></div></div>
 </div>
-<figcaption class="fig-cap"><span><b>Interface demonstration.</b> A sample workspace for a fictional interior design studio.</span><a class="link" href="#/dashboards">Try the role views</a></figcaption>
+<figcaption class="fig-cap"><span><b>Interface demonstration.</b> A sample workspace for a fictional interior design studio.</span><a class="link" href="/client-dashboards">Try the role views</a></figcaption>
 </figure>
 <div class="below">
 <p class="lead">Custom dashboards that bring clients, tasks, calendars and essential business information into one clearer workspace.</p>
@@ -733,7 +764,7 @@ Footer
 <li>Role-based access</li>
 <li>Operational reporting</li>
 </ul>
-<div class="act"><a class="link-arrow" href="#/dashboards">Explore client dashboards <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.3"/></svg></a></div>
+<div class="act"><a class="link-arrow" href="/client-dashboards">Explore client dashboards <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.3"/></svg></a></div>
 </div>
 </article>
 </div>
@@ -771,14 +802,31 @@ Footer
 <figure class="feature">
 <div class="frame">
 <div class="frame-bar"><div class="frame-dots" aria-hidden="true"><i></i><i></i><i></i></div><span class="frame-title">Halden Physiotherapy, lead flow</span><span class="tagline"><b>Concept study</b></span></div>
-<div data-flow></div>
+<div data-flow>
+<div class="flow">
+<div class="flow-col"><h4>Where inquiries arrive</h4>
+<div class="node leak">Website form<small>Goes to one personal inbox</small></div>
+<div class="node leak">Instagram DMs<small>No owner</small></div>
+<div class="node">WhatsApp<small>Front desk phone</small></div>
+<div class="node leak">Phone calls<small>Not logged anywhere</small></div>
+</div><div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h17M14 6l6 6-6 6" stroke="currentColor" stroke-width="1.4"/></svg></div>
+<div class="flow-col"><h4>First response</h4>
+<div class="node">Front desk<small>Replies between appointments</small></div>
+<div class="node leak">Owner<small>Picks up whatever is left, often late</small></div>
+</div><div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h17M14 6l6 6-6 6" stroke="currentColor" stroke-width="1.4"/></svg></div>
+<div class="flow-col"><h4>Outcome</h4>
+<div class="node ok">Consultation booked</div>
+<div class="node leak">Went quiet<small>No follow-up</small></div>
+</div>
+</div>
+<div class="flow-legend"><i aria-hidden="true"></i>Marked points are where inquiries get lost.</div></div>
 </div>
 <figcaption class="fig-cap"><span><b>Lead flow map.</b> Where inquiries arrive, who answers them and where they get lost.</span><span>Fictional business</span></figcaption>
 </figure>
 <ul class="studies">
-<li><a href="#/gtm"><span class="n">01</span><b>Halden audit findings</b><span>Concept study. A prioritised list of what to fix first.</span></a></li>
+<li><a href="/gtm-audit"><span class="n">01</span><b>Halden audit findings</b><span>Concept study. A prioritised list of what to fix first.</span></a></li>
 <li><div class="here"><span class="n">02</span><b style="text-decoration:none">Halden lead flow map</b><span>Concept study. Shown here.</span></div></li>
-<li><a href="#/dashboards"><span class="n">03</span><b>Meridian workspace</b><span>Interface demonstration with owner, manager and team views.</span></a></li>
+<li><a href="/client-dashboards"><span class="n">03</span><b>Meridian workspace</b><span>Interface demonstration with owner, manager and team views.</span></a></li>
 </ul>
 </div>
 </div>
@@ -818,275 +866,8 @@ Footer
 <h2 class="h2" id="close-title">Have something worth building?</h2>
 <div class="body">
 <p class="text">Tell us a little about your business and what you'd like to improve. We'll take it from there.</p>
-<a class="btn" href="#/contact">Start a conversation</a>
+<a class="btn" href="/contact">Start a conversation</a>
 </div>
-</div>
-</section>
-</div>
-<!-- ====================================================== GTM AUDIT & EXECUTION -->
-<div class="page" data-page="gtm" hidden>
-<section class="p-hero">
-<div class="wrap">
-<p class="kicker"><b>01</b>GTM Audit &amp; Execution</p>
-<div class="g12">
-<h2 class="h1" tabindex="-1">Find where revenue is leaking. Then fix it.</h2>
-<p class="lead">We review how your business finds, answers and wins customers, show you exactly where deals slip away, and then build the fixes.</p>
-</div>
-</div>
-</section>
-<section class="sec rule">
-<div class="wrap split">
-<div class="l"><h2 class="h2">Most businesses don't need more leads. They need to stop losing the ones they have.</h2></div>
-<div class="r">
-<p class="text">Inquiries arrive through Instagram, WhatsApp, the website and the phone. Some get a reply in minutes, some the next day, some never. Quotes go out and nobody checks back. Nobody can say which channel actually brings in paying clients.</p>
-<p class="text">It rarely feels like a crisis. It just quietly caps how much the business can grow, and spending more on marketing only pours more water into the same leaky bucket.</p>
-</div>
-</div>
-</section>
-<section class="sec paper">
-<div class="wrap g12">
-<div style="grid-column:1 / span 5" class="gtm-l">
-<h2 class="h2">The audit</h2>
-<p class="text" style="margin-top:24px">We follow the path a customer takes, from first hearing about you to paying you, and look at every point where they can fall away. Then we put it in writing, ranked by what's worth fixing first.</p>
-<ul class="caps-list">
-<li>Lead sources and how they're tracked</li>
-<li>Response time and ownership</li>
-<li>Sales process and follow-up</li>
-<li>CRM, tools and data</li>
-<li>Website and inquiry flow</li>
-<li>Reporting and visibility</li>
-</ul>
-</div>
-<figure style="grid-column:7 / span 6" class="gtm-r">
-<div data-audit="all"></div>
-<figcaption class="fig-cap"><span><b>Concept study.</b> Halden Physiotherapy, a fictional clinic.</span><span>Not a client project</span></figcaption>
-</figure>
-</div>
-</section>
-<section class="sec">
-<div class="wrap">
-<h2 class="h2" style="margin-bottom:clamp(36px,5vw,56px)">What a project can include</h2>
-<div class="deliver">
-<section aria-labelledby="d1"><h3 id="d1">Audit</h3><p>A clear picture of where you stand.</p>
-<ul><li>Written findings report</li><li>Lead flow map</li><li>Tool and data review</li><li>Prioritised fix list</li></ul></section>
-<section aria-labelledby="d2"><h3 id="d2">Execution</h3><p>The fixes, built and running.</p>
-<ul><li>CRM setup or cleanup</li><li>Inquiry capture and routing</li><li>Follow-up automation</li><li>Outbound workflows</li></ul></section>
-<section aria-labelledby="d3"><h3 id="d3">Reporting</h3><p>So you can see it working.</p>
-<ul><li>Pipeline view</li><li>Lead source tracking</li><li>Weekly summary</li><li>Handover documentation</li></ul></section>
-</div>
-<p class="small" style="margin-top:24px">Every project is scoped individually. You can take the audit on its own, or ask us to build the fixes too.</p>
-</div>
-</section>
-<section class="sec rule">
-<div class="wrap">
-<h2 class="h2" style="margin-bottom:clamp(36px,5vw,56px)">How an engagement runs</h2>
-<ol class="rows">
-<li><h3>Conversation</h3><p>We talk about how your business sells today and what you'd like to change, and agree on the audit's scope in writing.</p></li>
-<li><h3>Audit</h3><p>We review your tools and data, speak to whoever handles inquiries and map how leads move through the business.</p></li>
-<li><h3>Findings</h3><p>We walk you through the report and agree on priorities. You can stop here and act on it yourself.</p></li>
-<li><h3>Execution</h3><p>If you'd like us to continue, we build the agreed fixes and connect them to the tools you already use.</p></li>
-<li><h3>Review</h3><p>A few weeks later, we check the fixes are holding up and adjust anything that isn't.</p></li>
-</ol>
-</div>
-</section>
-<section class="sec paper">
-<div class="wrap split">
-<div class="l"><h2 class="h2">What we'll need from you</h2><p class="text" style="margin-top:20px">Nothing needs to be tidied up first. We'd rather see how things really are.</p></div>
-<div class="r">
-<ul class="need">
-<li><b>Access to your CRM, inboxes and tools,</b> view-only is fine for the audit.</li>
-<li><b>An hour with whoever handles inquiries</b>, because they know where things slip.</li>
-<li><b>A list of the tools you pay for,</b> even the ones nobody uses.</li>
-<li><b>A few recent deals you won and lost.</b></li>
-<li><b>One person who can make decisions</b>, so priorities don't stall.</li>
-</ul>
-</div>
-</div>
-</section>
-<section class="closing">
-<div class="wrap begin">
-<h2 class="h2">Want to see where you're losing customers?</h2>
-<a class="btn" href="#/contact/gtm">Book a GTM audit</a>
-</div>
-</section>
-</div>
-<!-- ====================================================== CLIENT DASHBOARDS -->
-<div class="page" data-page="dashboards" hidden>
-<section class="p-hero">
-<div class="wrap">
-<p class="kicker"><b>02</b>Client Dashboards</p>
-<div class="g12">
-<h2 class="h1" tabindex="-1">Make the moving parts easier to manage.</h2>
-<p class="lead">Custom dashboards that bring clients, tasks, calendars and essential business information into one clearer workspace.</p>
-</div>
-</div>
-</section>
-<section class="sec rule">
-<div class="wrap split">
-<div class="l"><h2 class="h2">Most software is built for everyone. That's the problem.</h2></div>
-<div class="r">
-<p class="text">Off-the-shelf tools try to serve every kind of business, so they arrive with features, settings and screens you'll never use. Teams try them for a few weeks, then drift back to spreadsheets and WhatsApp.</p>
-<p class="text">A custom dashboard works the other way round. It starts with your clients, your work in progress and the people responsible, and shows only that. There's less to learn and less to ignore.</p>
-</div>
-</div>
-</section>
-<section class="sec paper" id="demo">
-<div class="wrap">
-<div class="split">
-<div class="l"><h2 class="h2">Different views for different people</h2></div>
-<div class="r"><p class="text">An owner needs the whole picture. A manager needs their projects. Someone on the team needs today's work. Switch between the views below to see how one workspace serves all three.</p></div>
-</div>
-<div class="roles">
-<div>
-<div class="role-tabs" role="tablist" aria-label="Choose a role">
-<button role="tab" id="r-owner" aria-selected="true" aria-controls="role-panel" data-role="owner">Owner</button>
-<button role="tab" id="r-manager" aria-selected="false" aria-controls="role-panel" tabindex="-1" data-role="manager">Manager</button>
-<button role="tab" id="r-team" aria-selected="false" aria-controls="role-panel" tabindex="-1" data-role="team">Team member</button>
-</div>
-<div class="frame">
-<div class="frame-bar"><div class="frame-dots" aria-hidden="true"><i></i><i></i><i></i></div><span class="frame-title" id="role-title">Meridian Interiors workspace</span><span class="tagline"><b>Sample data</b></span></div>
-<div class="ui ui-pad role-panel" id="role-panel" role="tabpanel" aria-labelledby="r-owner" tabindex="0"></div>
-</div>
-<p class="fig-cap"><span><b>Interface demonstration.</b> All names, clients and dates are fictional.</span></p>
-</div>
-<aside class="access" aria-live="polite" id="access"></aside>
-</div>
-</div>
-</section>
-<section class="sec">
-<div class="wrap">
-<h2 class="h2" style="margin-bottom:clamp(36px,5vw,56px)">What a dashboard can include</h2>
-<div class="inc">
-<div><h3>Client management</h3><p>Every client in one place with their stage, owner, history and next step.</p></div>
-<div><h3>Tasks and assignments</h3><p>Clear owners and due dates, with overdue work surfaced before it becomes a problem.</p></div>
-<div><h3>Calendar and scheduling</h3><p>Meetings, site visits and deadlines tied to the client and person they belong to.</p></div>
-<div><h3>Performance visibility</h3><p>The handful of numbers you'd otherwise assemble by hand, kept up to date.</p></div>
-<div><h3>Inquiry capture</h3><p>New inquiries from your website and other channels land in the workspace with an owner.</p></div>
-<div><h3>Automation and integrations</h3><p>Reminders and handovers handled for you, and connections to tools that offer a reliable way in.</p></div>
-</div>
-</div>
-</section>
-<section class="sec paper">
-<div class="wrap split">
-<div class="l"><h2 class="h2">Permissions and data access</h2></div>
-<div class="r">
-<p class="text">Access is planned at the start, not bolted on later. During design we agree with you who can see and change what, and set up each role to match.</p>
-<p class="text">Client contact details, pricing and internal notes stay with the people who need them. If someone leaves, their access can be removed without disrupting anyone else.</p>
-</div>
-</div>
-</section>
-<section class="sec">
-<div class="wrap">
-<h2 class="h2" style="margin-bottom:clamp(36px,5vw,56px)">How we build it</h2>
-<ol class="rows">
-<li><h3>Discover</h3><p>We map how clients, work and information move through your business today, and where things get lost.</p></li>
-<li><h3>Design</h3><p>We plan the views for each role, the workflows to automate and the tools to connect, and you approve them before we build.</p></li>
-<li><h3>Build</h3><p>We build the workspace, bring in your existing data and train your team on their daily use of it.</p></li>
-<li><h3>Maintain</h3><p>We fix issues, make adjustments and add to the system as your business changes, if you'd like us to stay involved.</p></li>
-</ol>
-</div>
-</section>
-<section class="closing rule">
-<div class="wrap begin">
-<h2 class="h2">Tell us how your business runs.</h2>
-<a class="btn" href="#/contact/dashboards">Discuss your requirements</a>
-</div>
-</section>
-</div>
-<!-- ====================================================== CONTACT -->
-<div class="page" data-page="contact" hidden>
-<section class="p-hero" style="padding-bottom:0">
-<div class="wrap g12 contact-grid">
-<div class="l">
-<h2 class="h1" tabindex="-1" style="font-size:clamp(2.6rem,5vw,4.2rem)">Start a project</h2>
-<p class="lead" style="margin-top:22px">Tell us a little about your business and what you'd like to improve. You don't need a finished brief.</p>
-<ol class="next" aria-label="What happens next">
-<li>We read your message and check we're a good fit.</li>
-<li>We reply with a few questions or a time to talk.</li>
-<li>If it makes sense, you get a written proposal.</li>
-</ol>
-<p class="small" id="contact-direct" hidden style="margin-top:22px"></p>
-</div>
-<div class="r">
-<form class="form" id="inquiry" novalidate>
-<div class="fields">
-<div class="field"><label for="f-name">Name</label><input type="text" id="f-name" name="name" autocomplete="name" required><span class="err" id="e-name"></span></div>
-<div class="field"><label for="f-email">Email</label><input type="email" id="f-email" name="email" autocomplete="email" required><span class="err" id="e-email"></span></div>
-<div class="field"><label for="f-company">Business name</label><input type="text" id="f-company" name="company" autocomplete="organization" required><span class="err" id="e-company"></span></div>
-<div class="field"><label for="f-site">Website or Instagram <span class="opt">(optional)</span></label><input type="text" id="f-site" name="website" inputmode="url"></div>
-<fieldset class="field full" id="f-service" aria-describedby="e-service">
-<legend>What are you interested in?</legend>
-<div class="choices">
-<label class="choice"><input type="radio" name="service" value="GTM audit"><span>GTM audit</span></label>
-<label class="choice"><input type="radio" name="service" value="Client dashboards"><span>Client dashboards</span></label>
-<label class="choice"><input type="radio" name="service" value="Both"><span>Both</span></label>
-<label class="choice"><input type="radio" name="service" value="Not sure yet"><span>Not sure yet</span></label>
-</div>
-<span class="err" id="e-service"></span>
-</fieldset>
-<div class="field full"><label for="f-msg">What would you like to improve?</label><textarea id="f-msg" name="message" required placeholder="A few sentences is plenty."></textarea><span class="err" id="e-msg"></span></div>
-<div class="hp" aria-hidden="true"><label for="f-hp">Leave this empty</label><input type="text" id="f-hp" name="company_url" tabindex="-1" autocomplete="off"></div>
-</div>
-<div class="form-foot">
-<p class="small">We'll only use these details to reply to you. See our <a class="link" href="#/privacy">privacy policy</a>.</p>
-<button class="btn" type="submit" id="send">Send message</button>
-</div>
-</form>
-<div class="result" id="result" hidden tabindex="-1">
-<h2 id="result-title"></h2>
-<p id="result-text"></p>
-<div id="result-copy" hidden>
-<textarea id="brief" readonly aria-label="Your message"></textarea>
-<div class="row">
-<a class="btn btn-sm" id="mail-btn" href="#" target="_blank" rel="noopener" hidden>Open in your email app</a>
-<button class="btn btn-sm btn-line" type="button" id="copy-btn">Copy message</button>
-</div>
-<p class="status" id="copy-status" aria-live="polite"></p>
-</div>
-<div class="row" style="margin-top:16px"><button class="btn btn-sm btn-line" type="button" id="again">Edit message</button></div>
-</div>
-</div>
-</div>
-</section>
-<div class="sec-tight"></div>
-</div>
-<!-- ====================================================== PRIVACY -->
-<div class="page" data-page="privacy" hidden>
-<section class="p-hero">
-<div class="wrap legal">
-<h2 class="h1" tabindex="-1" style="font-size:clamp(2.4rem,5vw,3.8rem)">Privacy Policy</h2>
-<p class="small" data-updated style="margin-top:18px"></p>
-<h2>What we collect</h2>
-<p>When you contact us through this website, we receive the details you enter: your name, email address, business name, website or social profile if you share it, and your message.</p>
-<h2>How we use it</h2>
-<p>We use these details to reply to your inquiry and, if you decide to work with us, to discuss and deliver your project. We don't sell your information or use it for unrelated marketing.</p>
-<h2>Who else handles it</h2>
-<p>Your message passes through the services we use to run this website and receive email. They process it only to provide those services to us.</p>
-<h2>How long we keep it</h2>
-<p>We keep inquiries for as long as we need them to respond and maintain a reasonable record of our conversations. You can ask us to delete your information at any time.</p>
-<h2>Your choices</h2>
-<p>You can ask to see, correct or delete the information we hold about you by contacting us<span data-contact-sentence></span>.</p>
-<h2>Changes</h2>
-<p>If we change this policy, we'll update this page and the date above.</p>
-</div>
-</section>
-</div>
-<!-- ====================================================== TERMS -->
-<div class="page" data-page="terms" hidden>
-<section class="p-hero">
-<div class="wrap legal">
-<h2 class="h1" tabindex="-1" style="font-size:clamp(2.4rem,5vw,3.8rem)">Terms of Service</h2>
-<p class="small" data-updated style="margin-top:18px"></p>
-<h2>Using this website</h2>
-<p>This website describes RevenueOS and the services we offer. You may browse it and contact us through it for genuine inquiries.</p>
-<h2>Our content</h2>
-<p>The text, designs and demonstrations on this website belong to RevenueOS unless stated otherwise. The concept studies and sample interfaces show fictional businesses and data, and are not client work.</p>
-<h2>Project work</h2>
-<p>Any project we take on is governed by a separate written agreement covering scope, deliverables, timeline, fees and ownership. Nothing on this website forms a contract for services.</p>
-<h2>Accuracy</h2>
-<p>We try to keep this website accurate and up to date, but it's provided as it is. Descriptions of services are general and may change.</p>
-<h2>Changes</h2>
-<p>We may update these terms from time to time. The date above shows when they last changed.</p>
 </div>
 </section>
 </div>
@@ -1094,20 +875,20 @@ Footer
 <footer class="ftr">
 <div class="wrap g12">
 <div class="brand">
-<a class="wordmark" href="#/" aria-label="RevenueOS home">Revenue<span>OS</span></a>
+<a class="wordmark" href="/" aria-label="RevenueOS home">Revenue<span>OS</span></a>
 <p class="line">Run Better.<br>Grow Smarter.</p>
 </div>
 <nav aria-label="Services and studio">
 <span class="h">Studio</span>
-<a href="#/gtm">GTM Audit &amp; Execution</a>
-<a href="#/dashboards">Client Dashboards</a>
-<a href="#/studio">Studio</a>
-<a href="#/contact">Contact</a>
+<a href="/gtm-audit">GTM Audit &amp; Execution</a>
+<a href="/client-dashboards">Client Dashboards</a>
+<a href="/about">Studio</a>
+<a href="/contact">Contact</a>
 </nav>
 <nav class="second" aria-label="Legal">
 <span class="h">Legal</span>
-<a href="#/privacy">Privacy Policy</a>
-<a href="#/terms">Terms of Service</a>
+<a href="/privacy">Privacy Policy</a>
+<a href="/terms">Terms of Service</a>
 <a id="ftr-email" href="#" hidden></a>
 </nav>
 <div class="base"><span>© <span id="yr">2026</span> RevenueOS</span><span>GTM audits and client dashboards</span></div>
@@ -1176,6 +957,7 @@ const FINDINGS = [
 { area:'Website', text:'The contact form sends to one person\u2019s personal inbox.', pri:'Medium' }
 ];
 $$('[data-audit]').forEach(el => {
+if (el.querySelector('.doc')) return;
 const n = el.dataset.audit === 'all' ? FINDINGS.length : +el.dataset.audit;
 el.innerHTML = `<div class="doc"><div class="doc-head"><div><span class="small">GTM audit, sample findings</span><p class="t">Halden Physiotherapy</p></div><span class="small">Concept study</span></div>` +
 FINDINGS.slice(0, n).map(f => `<div class="find"><span class="area">${esc(f.area)}</span><p>${esc(f.text)}</p><span class="pri ${f.pri === 'High' ? 'high' : ''}">${esc(f.pri)}</span></div>`).join('') +
@@ -1183,7 +965,7 @@ FINDINGS.slice(0, n).map(f => `<div class="find"><span class="area">${esc(f.area
 });
 /* ---------- Lead flow map (concept study) ---------- */
 const flowArrow = '<div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h17M14 6l6 6-6 6" stroke="currentColor" stroke-width="1.4"/></svg></div>';
-$$('[data-flow]').forEach(el => el.innerHTML = `
+$$('[data-flow]').forEach(el => { if (el.querySelector('.flow')) return; el.innerHTML = `
 <div class="flow">
 <div class="flow-col"><h4>Where inquiries arrive</h4>
 <div class="node leak">Website form<small>Goes to one personal inbox</small></div>
@@ -1200,7 +982,7 @@ $$('[data-flow]').forEach(el => el.innerHTML = `
 <div class="node leak">Went quiet<small>No follow-up</small></div>
 </div>
 </div>
-<div class="flow-legend"><i aria-hidden="true"></i>Marked points are where inquiries get lost.</div>`);
+<div class="flow-legend"><i aria-hidden="true"></i>Marked points are where inquiries get lost.</div>`});
 /* ---------- Interface helpers ---------- */
 const av = id => id ? `<span class="av" title="${esc(PEOPLE[id].name)}">${id}</span>` : `<span class="av empty" title="No owner">?</span>`;
 const open = () => TASKS.filter(t => !t.done);
@@ -1238,12 +1020,15 @@ return `<div class="ui-head"><span class="ui-title">Your work, Rohan</span><span
 let role = 'owner';
 const roleTabs = $$('.role-tabs [role="tab"]');
 function showRole(r, focus){
+const panel = $('#role-panel'), access = $('#access');
+if (!panel || !access) return;
 role = r;
-roleTabs.forEach(b => { const on = b.dataset.role === r; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; if (on){ $('#role-panel').setAttribute('aria-labelledby', b.id); if (focus) b.focus(); } });
-$('#role-panel').innerHTML = ROLES[r]();
+roleTabs.forEach(b => { const on = b.dataset.role === r; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; if (on){ panel.setAttribute('aria-labelledby', b.id); if (focus) b.focus(); } });
+panel.innerHTML = ROLES[r]();
 const a = ACCESS[r];
-$('#access').innerHTML = `<h3>${esc(a.who)}</h3><p class="small" style="margin-bottom:14px">What this role can see</p><ul>${a.can.map(x => `<li>${esc(x)}</li>`).join('')}</ul><p class="small" style="margin-bottom:6px">Hidden from this role</p><ul class="no">${a.cannot.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`;
+access.innerHTML = `<h3>${esc(a.who)}</h3><p class="small" style="margin-bottom:14px">What this role can see</p><ul>${a.can.map(x => `<li>${esc(x)}</li>`).join('')}</ul><p class="small" style="margin-bottom:6px">Hidden from this role</p><ul class="no">${a.cannot.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`;
 }
+if ($('#role-panel')){
 roleTabs.forEach((b, i) => {
 b.addEventListener('click', () => showRole(b.dataset.role));
 b.addEventListener('keydown', e => {
@@ -1257,14 +1042,16 @@ TASKS.find(t => String(t.id) === id).done = e.target.checked;
 showRole('team'); renderHome();
 const box = $(`#role-panel [data-task="${id}"]`); if (box) box.focus();
 });
-renderHome(); showRole('owner');
+showRole('owner');
+}
+renderHome();
 /* ---------- Config-driven details ---------- */
 $('#yr').textContent = new Date().getFullYear();
 $$('[data-updated]').forEach(el => { if (CONFIG.legalUpdated) el.textContent = 'Last updated ' + CONFIG.legalUpdated; else el.remove(); });
-$$('[data-contact-sentence]').forEach(el => { el.innerHTML = CONFIG.email ? ` at <a class="link" href="mailto:${esc(CONFIG.email)}">${esc(CONFIG.email)}</a>` : ' through our <a class="link" href="#/contact">contact page</a>'; });
+$$('[data-contact-sentence]').forEach(el => { el.innerHTML = CONFIG.email ? ` at <a class="link" href="mailto:${esc(CONFIG.email)}">${esc(CONFIG.email)}</a>` : ' through our <a class="link" href="/contact">contact page</a>'; });
 if (CONFIG.email){
 const f = $('#ftr-email'); f.href = 'mailto:' + CONFIG.email; f.textContent = CONFIG.email; f.hidden = false;
-const c = $('#contact-direct'); c.innerHTML = `Prefer email? Write to <a class="link" href="mailto:${esc(CONFIG.email)}">${esc(CONFIG.email)}</a>.`; c.hidden = false;
+const c = $('#contact-direct'); if (c){ c.innerHTML = `Prefer email? Write to <a class="link" href="mailto:${esc(CONFIG.email)}">${esc(CONFIG.email)}</a>.`; c.hidden = false; }
 }
 /* ---------- Header + mobile menu ---------- */
 const hdr = $('#hdr');
@@ -1274,45 +1061,13 @@ const menuBtn = $('.menu-btn'), mnav = $('#mnav');
 const setMenu = o => { menuBtn.setAttribute('aria-expanded', String(o)); menuBtn.textContent = o ? 'Close' : 'Menu'; mnav.classList.toggle('open', o); document.body.style.overflow = o ? 'hidden' : ''; };
 menuBtn.addEventListener('click', () => setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'));
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && mnav.classList.contains('open')){ setMenu(false); menuBtn.focus(); } });
-/* ---------- Router ---------- */
-const META = {
-home:{ title:'GTM Audit & Custom Client Dashboards for Indian Businesses | RevenueOS', desc:'RevenueOS audits how Indian businesses find and win customers, fixes what is leaking, and builds custom client dashboards for managing clients, teams and work.' },
-gtm:{ title:'GTM Audit & Execution | RevenueOS', desc:'We review how your business finds, answers and wins customers, show you where deals slip away, and build the fixes.' },
-dashboards:{ title:'Client Dashboards | RevenueOS', desc:'Custom dashboards that bring clients, tasks, calendars and essential business information into one clearer workspace, with role-based access.' },
-contact:{ title:'Start a project | RevenueOS', desc:'Tell us about your business and what you would like to improve.' },
-privacy:{ title:'Privacy Policy | RevenueOS', desc:'How RevenueOS handles the information you share through this website.' },
-terms:{ title:'Terms of Service | RevenueOS', desc:'Terms for using the RevenueOS website.' }
-};
-const SECTIONS = { studio:'studio', work:'work', services:'services', faq:'faq' };
-const metaDesc = document.querySelector('meta[name="description"]');
-let first = true;
-function route(){
-const h = location.hash;
-if (h && !h.startsWith('#/')) return;
-const parts = h.replace(/^#\/?/, '').split('/').filter(Boolean);
-let page = parts[0] || 'home', section = null, param = parts[1] || null;
-if (SECTIONS[page]){ section = SECTIONS[page]; page = 'home'; }
-if (page === 'branding') page = 'gtm';
-if (!META[page]){ page = 'home'; }
-$$('.page').forEach(p => p.hidden = p.dataset.page !== page);
-document.title = META[page].title; metaDesc.setAttribute('content', META[page].desc);
-const navKey = section === 'studio' ? 'studio' : page;
-$$('[data-nav]').forEach(a => a.dataset.nav === navKey ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
-setMenu(false);
-if (page === 'contact' && param){ const v = { gtm:'GTM audit', dashboards:'Client dashboards' }[param]; const r = v && $(`input[name="service"][value="${v}"]`); if (r) r.checked = true; }
-if (section){
-requestAnimationFrame(() => { const el = document.getElementById(section); if (el){ el.scrollIntoView({ block:'start', behavior: first ? 'auto' : 'smooth' }); const hd = el.querySelector('h2'); if (hd && !first){ hd.setAttribute('tabindex','-1'); hd.focus({ preventScroll:true }); } } });
-} else {
-window.scrollTo({ top:0, left:0, behavior:'instant' });
-if (!first){ const hd = $(`[data-page="${page}"] h1, [data-page="${page}"] h2.h1`); if (hd) hd.focus({ preventScroll:true }); }
-}
-first = false;
-}
-window.addEventListener('hashchange', route);
 $('#skip').addEventListener('click', e => { e.preventDefault(); const hd = $('.page:not([hidden]) h1, .page:not([hidden]) h2.h1'); (hd || $('#content')).focus(); });
-route();
+$$('#mnav a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 /* ---------- Contact form (honest states only) ---------- */
 const form = $('#inquiry'), result = $('#result'), send = $('#send');
+if (form){
+const preset = { gtm:'GTM audit', dashboards:'Client dashboards' }[new URLSearchParams(location.search).get('service')];
+if (preset){ const picked = $(`input[name="service"][value="${preset}"]`); if (picked) picked.checked = true; }
 const rules = [
 ['f-name','e-name', () => $('#f-name').value.trim() ? '' : 'Enter your name.'],
 ['f-email','e-email', () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('#f-email').value.trim()) ? '' : 'Enter an email address like name@business.com.'],
@@ -1370,6 +1125,7 @@ try { await navigator.clipboard.writeText($('#brief').value); s.textContent = 'C
 catch { $('#brief').select(); s.textContent = 'Text selected. Press Ctrl+C or Cmd+C to copy.'; }
 });
 $('#again').addEventListener('click', () => { result.hidden = true; form.hidden = false; $('#copy-status').textContent = ''; $('#f-name').focus(); });
+}
 })();
 </script>
 </body>

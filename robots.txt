@@ -3,20 +3,26 @@
 
 User-agent: *
 Allow: /
+Disallow: /src/
 
 User-agent: GPTBot
 Allow: /
+Disallow: /src/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /src/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /src/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /src/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /src/
 
 Sitemap: https://revenueos.co.in/sitemap.xml

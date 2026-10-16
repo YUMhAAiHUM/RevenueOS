@@ -12,6 +12,9 @@ The studio is small on purpose. You talk directly to the people auditing the bus
 
 - Work: https://revenueos.co.in/work
 - Studio: https://revenueos.co.in/about
+- What is a GTM audit: https://revenueos.co.in/what-is-a-gtm-audit
+- Why businesses lose leads: https://revenueos.co.in/why-businesses-lose-leads
+- CRM or a custom dashboard: https://revenueos.co.in/crm-vs-custom-dashboard
 
 ## Services
 
@@ -26,6 +29,28 @@ https://revenueos.co.in/gtm-audit
 Custom dashboards that bring clients, tasks, calendars and essential business information into one clearer workspace. Each person sees what is relevant to their role: owners get the overview, and the team gets their work. A dashboard can include client management, tasks and assignments, calendar and scheduling, performance visibility, inquiry capture, and automation and integrations. Fields, stages, views and permissions are shaped around how the business works.
 
 https://revenueos.co.in/client-dashboards
+
+## Guides
+
+These are explanatory pages, not case studies. They do not name clients or report results. Concept studies mentioned in them are fictional and labelled as such on the site.
+
+### What is a GTM audit?
+
+A GTM audit reviews how a business finds, answers and wins customers, from the first inquiry to a paid job. It covers lead sources, reply speed, follow-up, the CRM and tools, the website path and reporting. The written output can include a findings report, a lead flow map, a tool and data review, and a prioritised fix list. The audit can be taken on its own. Execution, if you want it, is a separate decision and can include CRM setup or cleanup, inquiry capture and routing, follow-up automation, outbound workflows, and pipeline reporting.
+
+https://revenueos.co.in/what-is-a-gtm-audit
+
+### Why businesses lose leads
+
+Growing businesses often lose inquiries between the first message and a clear next step: a slow reply, a WhatsApp or phone lead that is never logged, no shared record, and no pipeline view. The practical order of fixes is one shared list, a named owner, a same-day reply target unless there is a real reason to set another, a follow-up when a quote goes quiet, the source on the record, and a pipeline you can open. A new ad budget or a custom dashboard does not fix a lead that was never written down.
+
+https://revenueos.co.in/why-businesses-lose-leads
+
+### CRM or a custom dashboard
+
+A CRM is the record of people and deals. A custom client dashboard is the workspace for clients, tasks, calendars and role-based access inside the business. It is not a login for the customer. Start with the CRM or a shared list when inquiries are leaking. Start with a dashboard when the sales record is sound and the day-to-day work is scattered. A spreadsheet is enough when the team already keeps every inquiry and next step on one living sheet. Some businesses need both services. Some need neither. Scope and price are agreed in writing before work starts. Nothing on the site is a quote.
+
+https://revenueos.co.in/crm-vs-custom-dashboard
 
 ## Contact
 

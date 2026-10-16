@@ -18,6 +18,8 @@ const pages = [
     id: 'home',
     file: 'index.html',
     path: '/',
+    title: 'GTM Audit & Client Dashboards in India | RevenueOS',
+    description: 'GTM audits, CRM and follow-up automation, and custom client dashboards for growing businesses in India. Fix how you sell, then keep the work moving.',
     crumb: null,
     expect: 'Fix how you sell.',
   },
@@ -25,8 +27,8 @@ const pages = [
     id: 'gtm',
     file: 'gtm-audit/index.html',
     path: '/gtm-audit',
-    title: 'GTM Audit & Execution | RevenueOS',
-    description: 'We review how your business finds, answers and wins customers, show you where deals slip away, and build the fixes.',
+    title: 'GTM Audit India for Growing SMEs | RevenueOS',
+    description: 'A sales process audit for Indian SMEs. We review lead capture, CRM, follow-up and pipeline reporting, then build the fixes you choose.',
     crumb: 'GTM Audit & Execution',
     expect: 'Find where revenue is leaking. Then fix it.',
     service: {
@@ -38,8 +40,8 @@ const pages = [
     id: 'dashboards',
     file: 'client-dashboards/index.html',
     path: '/client-dashboards',
-    title: 'Client Dashboards | RevenueOS',
-    description: 'Custom dashboards that bring clients, tasks, calendars and essential business information into one clearer workspace, with role-based access.',
+    title: 'Custom Client Dashboards in India | RevenueOS',
+    description: 'Custom client dashboards for Indian businesses. Clients, tasks, calendars and role-based access in one workspace built around your team.',
     crumb: 'Client Dashboards',
     expect: 'Make the moving parts easier to manage.',
     service: {
@@ -51,8 +53,8 @@ const pages = [
     id: 'work',
     file: 'work/index.html',
     path: '/work',
-    title: 'Studies | RevenueOS',
-    description: "We're a young studio, so instead of borrowed logos, here's how we think. These are self-initiated studies, not commissioned work.",
+    title: 'GTM & Dashboard Concept Studies | RevenueOS',
+    description: 'Self-initiated studies, not client projects. A sample GTM audit, a lead flow map and a client dashboard, using fictional businesses.',
     crumb: 'Studies',
     expect: 'Studies',
   },
@@ -60,8 +62,8 @@ const pages = [
     id: 'about',
     file: 'about/index.html',
     path: '/about',
-    title: 'Studio | RevenueOS',
-    description: 'RevenueOS is an independent studio that combines go-to-market work with practical business systems. You talk directly to the people auditing your business and building the fixes.',
+    title: 'About RevenueOS, a GTM Studio | RevenueOS',
+    description: 'An independent studio for Indian businesses. GTM audits, CRM and follow-up systems, and custom client dashboards. You work with the people doing the work.',
     crumb: 'Studio',
     expect: 'Small details. Clear thinking. Work that makes sense.',
   },
@@ -69,8 +71,8 @@ const pages = [
     id: 'contact',
     file: 'contact/index.html',
     path: '/contact',
-    title: 'Start a project | RevenueOS',
-    description: 'Tell us about your business and what you would like to improve.',
+    title: 'Start a GTM or Dashboard Project | RevenueOS',
+    description: 'Tell us about your business in India and what you want to improve: a GTM audit, follow-up automation, or a custom client dashboard.',
     crumb: 'Start a project',
     expect: 'Start a project',
   },
@@ -79,7 +81,7 @@ const pages = [
     file: 'privacy/index.html',
     path: '/privacy',
     title: 'Privacy Policy | RevenueOS',
-    description: 'How RevenueOS handles the information you share through this website.',
+    description: 'How RevenueOS handles your name, email, business and message from this website. We use them to reply. We do not sell your information.',
     crumb: 'Privacy Policy',
     expect: 'Privacy Policy',
   },
@@ -88,9 +90,42 @@ const pages = [
     file: 'terms/index.html',
     path: '/terms',
     title: 'Terms of Service | RevenueOS',
-    description: 'Terms for using the RevenueOS website.',
+    description: 'Terms for using the RevenueOS website. Nothing here is a contract for services. Project scope and fees sit in a separate written agreement.',
     crumb: 'Terms of Service',
     expect: 'Terms of Service',
+  },
+  {
+    id: 'guide-audit',
+    file: 'what-is-a-gtm-audit/index.html',
+    path: '/what-is-a-gtm-audit',
+    title: 'What Is a GTM Audit in India? | RevenueOS',
+    description: 'What a GTM audit covers, the checklist we use, who should commission one, and how it differs from buying another tool or more leads.',
+    crumb: 'What is a GTM audit?',
+    expect: 'What is a GTM audit?',
+    article: true,
+    links: ['/gtm-audit', '/contact', '/why-businesses-lose-leads'],
+  },
+  {
+    id: 'guide-leads',
+    file: 'why-businesses-lose-leads/index.html',
+    path: '/why-businesses-lose-leads',
+    title: 'Why Indian SMEs Lose Leads | RevenueOS',
+    description: 'Slow follow-up, WhatsApp and phone leads never logged, no CRM and no pipeline view. Where Indian SMEs lose inquiries, and how to fix it.',
+    crumb: 'Why businesses lose leads',
+    expect: 'Why do businesses lose leads?',
+    article: true,
+    links: ['/gtm-audit', '/contact', '/crm-vs-custom-dashboard'],
+  },
+  {
+    id: 'guide-crm',
+    file: 'crm-vs-custom-dashboard/index.html',
+    path: '/crm-vs-custom-dashboard',
+    title: 'CRM vs a Custom Dashboard | RevenueOS',
+    description: 'When a CRM fits, when a custom client dashboard fits, and when an Indian SME should keep the spreadsheet. An honest comparison.',
+    crumb: 'CRM or a custom dashboard',
+    expect: 'CRM, or a custom dashboard?',
+    article: true,
+    links: ['/client-dashboards', '/gtm-audit', '/contact'],
   },
 ];
 
@@ -206,12 +241,99 @@ function breadcrumbLd(page) {
   };
 }
 
-function applyMeta(head, page) {
+const PUBLISHED = '2026-10-16';
+
+function decodeEntities(value) {
+  return String(value)
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&nbsp;/g, ' ');
+}
+
+function plainText(html) {
+  return decodeEntities(
+    String(html)
+      .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+      .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim(),
+  );
+}
+
+function pageH1(html) {
+  const match = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/);
+  if (!match) throw new Error('Missing h1 while building schema');
+  return plainText(match[1]);
+}
+
+function parseFaqs(html) {
+  const faqs = [];
+  const re = /<details>\s*<summary>([\s\S]*?)<\/summary>\s*<p>([\s\S]*?)<\/p>\s*<\/details>/g;
+  let match;
+  while ((match = re.exec(html))) {
+    faqs.push({ q: plainText(match[1]), a: plainText(match[2]) });
+  }
+  return faqs;
+}
+
+function articleLd(page, html) {
+  const url = SITE + page.path;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: pageH1(html),
+    description: page.description,
+    url,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    inLanguage: 'en',
+    datePublished: PUBLISHED,
+    dateModified: PUBLISHED,
+    image: `${SITE}/og.png`,
+    author: {
+      '@type': 'Organization',
+      name: 'RevenueOS',
+      url: `${SITE}/`,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'RevenueOS',
+      url: `${SITE}/`,
+    },
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'RevenueOS',
+      url: `${SITE}/`,
+    },
+  };
+}
+
+function faqLd(faqs) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
+      },
+    })),
+  };
+}
+
+function applyMeta(head, page, html) {
   const canonical = SITE + page.path;
   let next = head;
   next = setBetween(next, '(<title>)[\\s\\S]*?(</title>)', escAttr(page.title));
   next = setBetween(next, '(<meta name="description" content=")[^"]*(")', escAttr(page.description));
   next = setBetween(next, '(<link rel="canonical" href=")[^"]*(")', canonical);
+  next = setBetween(next, '(<meta property="og:type" content=")[^"]*(")', page.article ? 'article' : 'website');
   next = setBetween(next, '(<meta property="og:url" content=")[^"]*(")', canonical);
   next = setBetween(next, '(<meta property="og:title" content=")[^"]*(")', escAttr(page.title));
   next = setBetween(next, '(<meta property="og:description" content=")[^"]*(")', escAttr(page.description));
@@ -220,7 +342,11 @@ function applyMeta(head, page) {
   next = next.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\n?/g, '');
   const blocks = [];
   if (page.service) blocks.push(jsonLdScript(serviceLd(page)));
+  if (page.article) blocks.push(jsonLdScript(articleLd(page, html)));
   blocks.push(jsonLdScript(breadcrumbLd(page)));
+  const faqs = page.article ? parseFaqs(html) : [];
+  if (page.article && faqs.length < 2) throw new Error(`${page.file} needs a Q&A section`);
+  if (faqs.length) blocks.push(jsonLdScript(faqLd(faqs)));
   next = next.replace('</head>', `${blocks.join('\n')}\n</head>`);
   return next;
 }
@@ -357,8 +483,10 @@ const footer = extractBalanced(source, /<footer class="ftr"/, 'footer');
 const script = source.match(/<script>\s*\/\* =+\s*SITE CONFIGURATION[\s\S]*?<\/script>/)[0];
 const pageHtml = extractAllPages(source);
 
-if (!pageHtml.home || !pageHtml.gtm || !pageHtml.dashboards || !pageHtml.contact || !pageHtml.privacy || !pageHtml.terms) {
-  throw new Error(`Missing pages in source: ${Object.keys(pageHtml).join(', ')}`);
+for (const page of pages) {
+  if (!pageHtml[page.id] && page.id !== 'work' && page.id !== 'about') {
+    throw new Error(`Missing pages in source: ${page.id}. Found ${Object.keys(pageHtml).join(', ')}`);
+  }
 }
 
 const workSection = extractBalanced(pageHtml.home, /<section class="sec rule work"/, 'section')
@@ -375,6 +503,9 @@ const content = {
   contact: showPage(pageHtml.contact),
   privacy: showPage(pageHtml.privacy),
   terms: showPage(pageHtml.terms),
+  'guide-audit': showPage(pageHtml['guide-audit']),
+  'guide-leads': showPage(pageHtml['guide-leads']),
+  'guide-crm': showPage(pageHtml['guide-crm']),
 };
 
 for (const stale of ['gtm-audit.html', 'client-dashboards.html', 'work.html', 'about.html', 'contact.html', 'privacy.html', 'terms.html']) {
@@ -385,7 +516,7 @@ const titles = new Set();
 const canonicals = new Set();
 
 for (const page of pages) {
-  const pageHead = page.id === 'home' ? head : applyMeta(head, page);
+  const pageHead = page.id === 'home' ? head : applyMeta(head, page, content[page.id]);
   let doc = `<!DOCTYPE html>\n<html lang="en">\n<!-- Generated from src/index.html by build.mjs. Edit the source, then run node build.mjs. -->\n${pageHead}\n<body>\n<a class="skip" href="#content" id="skip">Skip to content</a>\n${header}\n${mnav}\n<main id="content" tabindex="-1">\n${content[page.id]}\n</main>\n${footer}\n${script}\n</body>\n</html>\n`;
   doc = markCurrent(hydrate(doc), page.path);
   const file = path.join(root, page.file);
@@ -405,6 +536,9 @@ const robots = fs.readFileSync(path.join(root, 'robots.txt'), 'utf8');
 for (const page of pages) {
   const url = SITE + (page.path === '/' ? '/' : page.path);
   if (!sitemap.includes(`<loc>${url}</loc>`)) throw new Error(`sitemap missing ${url}`);
+  const block = sitemap.split(`<loc>${url}</loc>`)[1] || '';
+  const lastmod = block.slice(0, 180).match(/<lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod>/);
+  if (!lastmod) throw new Error(`sitemap missing lastmod for ${url}`);
   if (!llms.includes(url)) throw new Error(`llms.txt missing ${url}`);
 }
 if (!robots.includes('Sitemap: https://revenueos.co.in/sitemap.xml')) throw new Error('robots.txt missing sitemap');
@@ -418,6 +552,15 @@ if (vercel.includes('google9345a796b13910f7.html')) throw new Error('vercel.json
 
 console.log(`Built ${pages.length} HTML files.`);
 
+function assertJsonLd(blocks, page) {
+  for (const block of blocks) {
+    if (block['@context'] !== 'https://schema.org') throw new Error(`${page.file} JSON-LD context`);
+    if (!block['@type']) throw new Error(`${page.file} JSON-LD missing @type`);
+  }
+  const types = blocks.map((b) => b['@type']);
+  if (new Set(types).size !== types.length) throw new Error(`${page.file} duplicate JSON-LD types: ${types.join(', ')}`);
+}
+
 function assertPage(doc, page, originalHead) {
   const body = doc.slice(doc.indexOf('<body'));
   const h1s = body.match(/<h1\b/g) || [];
@@ -430,7 +573,23 @@ function assertPage(doc, page, originalHead) {
   if (!doc.includes('property="og:image" content="https://revenueos.co.in/og.png"')) {
     throw new Error(`${page.file} missing og:image`);
   }
+  const title = decodeEntities(doc.match(/<title>([^<]*)<\/title>/)[1]);
+  const description = decodeEntities(doc.match(/<meta name="description" content="([^"]*)"/)[1]);
+  if (title !== page.title) throw new Error(`${page.file} title mismatch: ${title}`);
+  if (description !== page.description) throw new Error(`${page.file} description mismatch`);
+  if (title.length > 60) throw new Error(`${page.file} title is ${title.length} characters`);
+  if (description.length > 155) throw new Error(`${page.file} description is ${description.length} characters`);
+  if (description.length < 50) throw new Error(`${page.file} description is only ${description.length} characters`);
+  for (const attr of ['og:title', 'twitter:title']) {
+    const found = decodeEntities(doc.match(new RegExp(`<meta ${attr.startsWith('og') ? 'property' : 'name'}="${attr}" content="([^"]*)"`))[1]);
+    if (found !== title) throw new Error(`${page.file} ${attr} out of sync`);
+  }
+  for (const attr of ['og:description', 'twitter:description']) {
+    const found = decodeEntities(doc.match(new RegExp(`<meta ${attr.startsWith('og') ? 'property' : 'name'}="${attr}" content="([^"]*)"`))[1]);
+    if (found !== description) throw new Error(`${page.file} ${attr} out of sync`);
+  }
   const blocks = ldBlocks(doc);
+  assertJsonLd(blocks, page);
   if (page.id === 'home') {
     if (!originalHead.includes(doc.match(/<head>[\s\S]*?<\/head>/)[0].match(/<script type="application\/ld\+json">[\s\S]*<\/script>/)[0])) {
       throw new Error('Homepage JSON-LD changed');
@@ -442,17 +601,14 @@ function assertPage(doc, page, originalHead) {
     if (types.includes('BreadcrumbList')) throw new Error('Homepage should not add a breadcrumb');
   } else {
     const canonical = `${SITE}${page.path}`;
-    const title = doc.match(/<title>([^<]*)<\/title>/)[1];
-    if (title !== escAttr(page.title)) throw new Error(`${page.file} title mismatch: ${title}`);
-    const description = doc.match(/<meta name="description" content="([^"]*)"/)[1];
-    if (description !== escAttr(page.description)) throw new Error(`${page.file} description mismatch`);
     for (const attr of ['<link rel="canonical" href="', '<meta property="og:url" content="']) {
       if (!doc.includes(attr + canonical + '"')) throw new Error(`${page.file} missing ${attr}${canonical}`);
     }
-    if (!doc.includes(`<meta property="og:title" content="${escAttr(page.title)}"`)) throw new Error(`${page.file} og:title`);
-    if (!doc.includes(`<meta property="og:description" content="${escAttr(page.description)}"`)) throw new Error(`${page.file} og:description`);
     const crumb = blocks.find((b) => b['@type'] === 'BreadcrumbList');
     if (!crumb || crumb.itemListElement.length !== 2) throw new Error(`${page.file} breadcrumb`);
+    if (crumb.itemListElement[0].item !== `${SITE}/` || crumb.itemListElement[0].name !== 'Home') {
+      throw new Error(`${page.file} breadcrumb home`);
+    }
     if (crumb.itemListElement[1].item !== canonical || crumb.itemListElement[1].name !== page.crumb) {
       throw new Error(`${page.file} breadcrumb target`);
     }
@@ -463,16 +619,46 @@ function assertPage(doc, page, originalHead) {
     } else if (service) {
       throw new Error(`${page.file} should not include a Service schema`);
     }
-    if (blocks.some((b) => b['@type'] === 'FAQPage' || b['@type'] === 'ProfessionalService')) {
-      throw new Error(`${page.file} should not repeat the homepage JSON-LD`);
+    if (blocks.some((b) => b['@type'] === 'ProfessionalService')) {
+      throw new Error(`${page.file} should not repeat the homepage business schema`);
+    }
+    const article = blocks.find((b) => b['@type'] === 'Article');
+    const faq = blocks.find((b) => b['@type'] === 'FAQPage');
+    if (page.article) {
+      if (!doc.includes('<meta property="og:type" content="article"')) throw new Error(`${page.file} og:type`);
+      if (!article || article.headline !== pageH1(doc) || article.description !== page.description) {
+        throw new Error(`${page.file} article schema`);
+      }
+      if (article.url !== canonical || article.mainEntityOfPage['@id'] !== canonical) throw new Error(`${page.file} article url`);
+      if (article.author.name !== 'RevenueOS' || article.publisher.name !== 'RevenueOS') throw new Error(`${page.file} article publisher`);
+      if (article.datePublished !== PUBLISHED || article.dateModified !== PUBLISHED) throw new Error(`${page.file} article dates`);
+      if (!faq || !Array.isArray(faq.mainEntity) || faq.mainEntity.length < 2) throw new Error(`${page.file} FAQ schema`);
+      for (const item of faq.mainEntity) {
+        if (!item.name || !item.acceptedAnswer || !item.acceptedAnswer.text) throw new Error(`${page.file} incomplete FAQ`);
+        if (!plainText(body).includes(item.name) || !plainText(body).includes(item.acceptedAnswer.text)) {
+          throw new Error(`${page.file} FAQ not visible: ${item.name}`);
+        }
+      }
+      const count = words(plainText(body.match(/<main[\s\S]*<\/main>/)[0]));
+      if (count < 600 || count > 1200) throw new Error(`${page.file} is ${count} words`);
+    } else if (article || faq) {
+      throw new Error(`${page.file} should not include Article or FAQPage schema`);
     }
   }
-  if (page.service) {
+  if (page.service || page.article) {
     const answer = doc.match(/<p class="text answer">([\s\S]*?)<\/p>/);
     if (!answer) throw new Error(`${page.file} missing answer intro`);
-    const count = words(answer[1]);
+    const count = words(plainText(answer[1]));
     if (count < 40 || count > 60) throw new Error(`${page.file} intro is ${count} words`);
-    if (!answer[1].startsWith('RevenueOS is ')) throw new Error(`${page.file} intro shape`);
+    if (page.service && !plainText(answer[1]).startsWith('RevenueOS is ')) throw new Error(`${page.file} intro shape`);
+  }
+  if (page.links) {
+    for (const href of page.links) {
+      if (!body.includes(`href="${href}"`)) throw new Error(`${page.file} missing link to ${href}`);
+    }
+  }
+  if (!body.includes('href="/what-is-a-gtm-audit"') || !body.includes('href="/why-businesses-lose-leads"') || !body.includes('href="/crm-vs-custom-dashboard"')) {
+    throw new Error(`${page.file} footer is missing guide links`);
   }
   const foreign = [...doc.matchAll(/data-page="([^"]+)"/g)].map((m) => m[1]);
   if (foreign.length !== 1 || foreign[0] !== page.id) throw new Error(`${page.file} page ids ${foreign.join(',')}`);

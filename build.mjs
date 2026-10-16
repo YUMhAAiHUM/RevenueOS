@@ -22,7 +22,7 @@ const pages = [
   },
   {
     id: 'gtm',
-    file: 'gtm-audit.html',
+    file: 'gtm-audit/index.html',
     path: '/gtm-audit',
     title: 'GTM Audit & Execution | RevenueOS',
     description: 'We review how your business finds, answers and wins customers, show you where deals slip away, and build the fixes.',
@@ -35,7 +35,7 @@ const pages = [
   },
   {
     id: 'dashboards',
-    file: 'client-dashboards.html',
+    file: 'client-dashboards/index.html',
     path: '/client-dashboards',
     title: 'Client Dashboards | RevenueOS',
     description: 'Custom dashboards that bring clients, tasks, calendars and essential business information into one clearer workspace, with role-based access.',
@@ -48,7 +48,7 @@ const pages = [
   },
   {
     id: 'work',
-    file: 'work.html',
+    file: 'work/index.html',
     path: '/work',
     title: 'Studies | RevenueOS',
     description: "We're a young studio, so instead of borrowed logos, here's how we think. These are self-initiated studies, not commissioned work.",
@@ -57,7 +57,7 @@ const pages = [
   },
   {
     id: 'about',
-    file: 'about.html',
+    file: 'about/index.html',
     path: '/about',
     title: 'Studio | RevenueOS',
     description: 'RevenueOS is an independent studio that combines go-to-market work with practical business systems. You talk directly to the people auditing your business and building the fixes.',
@@ -66,7 +66,7 @@ const pages = [
   },
   {
     id: 'contact',
-    file: 'contact.html',
+    file: 'contact/index.html',
     path: '/contact',
     title: 'Start a project | RevenueOS',
     description: 'Tell us about your business and what you would like to improve.',
@@ -75,7 +75,7 @@ const pages = [
   },
   {
     id: 'privacy',
-    file: 'privacy.html',
+    file: 'privacy/index.html',
     path: '/privacy',
     title: 'Privacy Policy | RevenueOS',
     description: 'How RevenueOS handles the information you share through this website.',
@@ -84,7 +84,7 @@ const pages = [
   },
   {
     id: 'terms',
-    file: 'terms.html',
+    file: 'terms/index.html',
     path: '/terms',
     title: 'Terms of Service | RevenueOS',
     description: 'Terms for using the RevenueOS website.',
@@ -376,6 +376,10 @@ const content = {
   terms: showPage(pageHtml.terms),
 };
 
+for (const stale of ['gtm-audit.html', 'client-dashboards.html', 'work.html', 'about.html', 'contact.html', 'privacy.html', 'terms.html']) {
+  fs.rmSync(path.join(root, stale), { force: true });
+}
+
 const titles = new Set();
 const canonicals = new Set();
 
@@ -384,6 +388,7 @@ for (const page of pages) {
   let doc = `<!DOCTYPE html>\n<html lang="en">\n<!-- Generated from src/index.html by build.mjs. Edit the source, then run npm run build. -->\n${pageHead}\n<body>\n<a class="skip" href="#content" id="skip">Skip to content</a>\n${header}\n${mnav}\n<main id="content" tabindex="-1">\n${content[page.id]}\n</main>\n${footer}\n${script}\n</body>\n</html>\n`;
   doc = markCurrent(hydrate(doc), page.path);
   const file = path.join(root, page.file);
+  fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, doc);
   assertPage(doc, page, head);
   titles.add(doc.match(/<title>([^<]*)<\/title>/)[1]);

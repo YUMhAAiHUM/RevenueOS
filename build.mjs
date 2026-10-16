@@ -2,6 +2,7 @@
  * Builds one static HTML file per public URL from src/index.html.
  * Output stays at the repo root so Vercel can serve it with no server.
  * Run: node build.mjs
+ * There is no package.json on purpose: this stays a static Vercel site.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -385,7 +386,7 @@ const canonicals = new Set();
 
 for (const page of pages) {
   const pageHead = page.id === 'home' ? head : applyMeta(head, page);
-  let doc = `<!DOCTYPE html>\n<html lang="en">\n<!-- Generated from src/index.html by build.mjs. Edit the source, then run npm run build. -->\n${pageHead}\n<body>\n<a class="skip" href="#content" id="skip">Skip to content</a>\n${header}\n${mnav}\n<main id="content" tabindex="-1">\n${content[page.id]}\n</main>\n${footer}\n${script}\n</body>\n</html>\n`;
+  let doc = `<!DOCTYPE html>\n<html lang="en">\n<!-- Generated from src/index.html by build.mjs. Edit the source, then run node build.mjs. -->\n${pageHead}\n<body>\n<a class="skip" href="#content" id="skip">Skip to content</a>\n${header}\n${mnav}\n<main id="content" tabindex="-1">\n${content[page.id]}\n</main>\n${footer}\n${script}\n</body>\n</html>\n`;
   doc = markCurrent(hydrate(doc), page.path);
   const file = path.join(root, page.file);
   fs.mkdirSync(path.dirname(file), { recursive: true });

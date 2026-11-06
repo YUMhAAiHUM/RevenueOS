@@ -63,7 +63,7 @@ const pages = [
     file: 'about/index.html',
     path: '/about',
     title: 'About RevenueOS, a GTM Studio | RevenueOS',
-    description: 'An independent studio for Indian businesses. GTM audits, CRM and follow-up systems, and custom client dashboards. You work with the people doing the work.',
+    description: 'An independent GTM and business systems studio founded by Geet Sharma. You work directly with the people doing the strategy and the build.',
     crumb: 'Studio',
     expect: 'Small details. Clear thinking. Work that makes sense.',
   },
@@ -491,15 +491,16 @@ for (const page of pages) {
 
 const workSection = extractBalanced(pageHtml.home, /<section class="sec rule work"/, 'section')
   .replace('<h2 class="h2" id="work-title">Studies</h2>', '<h1 class="h2" id="work-title">Studies</h1>');
-const aboutSection = extractBalanced(pageHtml.home, /<section class="sec paper studio"/, 'section')
+const aboutSection = extractBalanced(pageHtml.home, /<section class="sec studio"/, 'section')
   .replace('<h2 class="h2" id="studio-title">Small details. Clear thinking. Work that makes sense.</h2>', '<h1 class="h2" id="studio-title">Small details. Clear thinking. Work that makes sense.</h1>');
+const founderSection = extractBalanced(pageHtml.home, /<section class="sec paper founder"/, 'section');
 
 const content = {
   home: pageHtml.home,
   gtm: showPage(pageHtml.gtm),
   dashboards: showPage(pageHtml.dashboards),
   work: `<div class="page" data-page="work">\n${workSection}\n</div>`,
-  about: `<div class="page" data-page="about">\n${aboutSection}\n</div>`,
+  about: `<div class="page" data-page="about">\n${aboutSection}\n${founderSection}\n</div>`,
   contact: showPage(pageHtml.contact),
   privacy: showPage(pageHtml.privacy),
   terms: showPage(pageHtml.terms),
@@ -516,6 +517,7 @@ const titles = new Set();
 const canonicals = new Set();
 
 for (const page of pages) {
+  if (page.id === 'home') continue; // homepage is hand-built (v2), not generated
   const pageHead = page.id === 'home' ? head : applyMeta(head, page, content[page.id]);
   let doc = `<!DOCTYPE html>\n<html lang="en">\n<!-- Generated from src/index.html by build.mjs. Edit the source, then run node build.mjs. -->\n${pageHead}\n<body>\n<a class="skip" href="#content" id="skip">Skip to content</a>\n${header}\n${mnav}\n<main id="content" tabindex="-1">\n${content[page.id]}\n</main>\n${footer}\n${script}\n</body>\n</html>\n`;
   doc = markCurrent(hydrate(doc), page.path);
@@ -527,8 +529,8 @@ for (const page of pages) {
   canonicals.add(doc.match(/<link rel="canonical" href="([^"]+)"/)[1]);
 }
 
-if (titles.size !== pages.length) throw new Error(`Titles are not unique (${titles.size})`);
-if (canonicals.size !== pages.length) throw new Error(`Canonicals are not unique (${canonicals.size})`);
+if (titles.size !== pages.length - 1) throw new Error(`Titles are not unique (${titles.size})`);
+if (canonicals.size !== pages.length - 1) throw new Error(`Canonicals are not unique (${canonicals.size})`);
 
 const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const llms = fs.readFileSync(path.join(root, 'llms.txt'), 'utf8');

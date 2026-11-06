@@ -3,6 +3,8 @@
   "cleanUrls": false,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/src/:path*", "destination": "/", "permanent": false }
+    { "source": "/src/:path*", "destination": "/", "permanent": false },
+    { "source": "/contact", "destination": "/#contact", "permanent": false },
+    { "source": "/contact/", "destination": "/#contact", "permanent": false }
   ]
 }
